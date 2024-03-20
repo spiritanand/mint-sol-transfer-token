@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import dynamic from "next/dynamic";
 import "./globals.css";
-import "@solana/wallet-adapter-react-ui/styles.css";
+import dynamic from "next/dynamic";
+import Header from "@/components/layout/Header";
+// import WalletProviders from "./WalletProviders";
 
 const WalletProviders = dynamic(() => import("@/app/WalletProviders"), {
   ssr: false,
@@ -23,7 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <WalletProviders>{children}</WalletProviders>
+        <WalletProviders>
+          <Header />
+          {children}
+        </WalletProviders>
       </body>
     </html>
   );

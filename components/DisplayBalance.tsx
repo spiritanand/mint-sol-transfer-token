@@ -5,11 +5,10 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { useEffect, useState } from "react";
 
 export const DisplayBalance = () => {
-  const [balance, setBalance] = useState(0);
   const { connection } = useConnection();
   const { publicKey } = useWallet();
 
-  console.log({ publicKey });
+  const [balance, setBalance] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     if (!connection || !publicKey) {
@@ -25,13 +24,17 @@ export const DisplayBalance = () => {
     );
 
     connection.getAccountInfo(publicKey).then((info) => {
-      setBalance(info?.lamports ?? 0);
+      setBalance(info?.lamports);
     });
   }, [connection, publicKey]);
 
   return (
     <div>
-      <p>{publicKey ? `Balance: ${balance / LAMPORTS_PER_SOL} SOL` : ""}</p>
+      <p>
+        {publicKey && balance && balance >= 0
+          ? `Balance: ${balance / LAMPORTS_PER_SOL} SOL`
+          : ""}
+      </p>
     </div>
   );
 };
