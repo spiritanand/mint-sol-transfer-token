@@ -1,6 +1,7 @@
 import CreateMint from "@/app/createToken/CreateMint";
 import CreateTokenAccount from "@/app/createToken/CreateTokenAccount";
 import MintToken from "@/app/createToken/MintToken";
+import TransferToken from "@/app/createToken/TransferToken";
 
 function Page() {
   return (
@@ -8,6 +9,8 @@ function Page() {
       <CreateMint />
       <CreateTokenAccount />
       <MintToken />
+
+      <TransferToken />
     </main>
   );
 }

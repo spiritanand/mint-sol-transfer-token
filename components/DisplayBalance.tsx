@@ -29,12 +29,10 @@ export const DisplayBalance = () => {
   }, [connection, publicKey]);
 
   return (
-    <div>
-      <p>
-        {publicKey && balance && balance >= 0
-          ? `Balance: ${balance / LAMPORTS_PER_SOL} SOL`
-          : ""}
-      </p>
-    </div>
+    <p className="text-xs">
+      {publicKey && balance && balance >= 0
+        ? `Balance: ${balance / LAMPORTS_PER_SOL} SOL`
+        : ""}
+    </p>
   );
 };

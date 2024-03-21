@@ -45,34 +45,6 @@ function CreateMint() {
     });
 
     setTokenMint(tokenMintKeypair.publicKey);
-
-    // const destination = await buildCreateAssociatedTokenAccountTransaction(
-    //   tokenMintKeypair.publicKey,
-    //   new PublicKey("C8twmXGV6BFerUbV5kK6uBsxboeR3qXDzjFUJyKdZMc6"),
-    // );
-    //
-    // await buildTransferTransaction(associatedTokenAddress, destination, 25);
-  }
-
-  async function buildTransferTransaction(
-    tokenAccount: web3.PublicKey,
-    destination: web3.PublicKey,
-    amount: number,
-  ) {
-    if (!wallet || !publicKey) throw new Error("Missing wallet or publicKey");
-
-    const transaction = new web3.Transaction().add(
-      token.createTransferInstruction(
-        tokenAccount,
-        destination,
-        publicKey,
-        amount,
-      ),
-    );
-
-    const transferSig = await sendTransaction(transaction, connection);
-
-    console.log({ transferSig });
   }
 
   return (
