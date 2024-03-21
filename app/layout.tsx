@@ -3,9 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
 import Header from "@/components/layout/Header";
-// import WalletProviders from "./WalletProviders";
+// import Providers from "./Providers";
 
-const WalletProviders = dynamic(() => import("@/app/WalletProviders"), {
+const WalletProviders = dynamic(() => import("@/app/Providers"), {
   ssr: false,
 });
 
